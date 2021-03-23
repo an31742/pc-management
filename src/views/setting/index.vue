@@ -2,6 +2,7 @@
   <div class="container-setting">
     <el-card>
       <div slot="header">
+        <!-- 使用面包屑组件 -->
         <my-bread>个人设置</my-bread>
       </div>
       <!-- 栅格 -->
