@@ -1,4 +1,5 @@
 <template>
+<!-- //封装选择器插件 -->
   <el-select :value="value" @change="changeChannel" clearable placeholder="请选择">
     <el-option v-for="item in channelOptions" :key="item.id" :label="item.name" :value="item.id"></el-option>
   </el-select>

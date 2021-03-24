@@ -9,21 +9,28 @@
       <el-row>
         <el-col :span="12">
           <el-form label-width="120px">
-            <el-form-item label="编号：">{{user.id}}</el-form-item>
-            <el-form-item label="手机：">{{user.mobile}}</el-form-item>
+            <el-form-item label="编号：">{{ user.id }}</el-form-item>
+            <el-form-item label="手机：">{{ user.mobile }}</el-form-item>
             <el-form-item label="媒体名称：">
               <el-input v-model="user.name"></el-input>
             </el-form-item>
             <el-form-item label="媒体介绍：">
-              <el-input v-model="user.intro" type="textarea" :rows="3"></el-input>
+              <el-input
+                v-model="user.intro"
+                type="textarea"
+                :rows="3"
+              ></el-input>
             </el-form-item>
             <el-form-item label="邮箱：">
               <el-input v-model="user.email"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="updateUserInfo">保存设置</el-button>
+              <el-button type="primary" @click="updateUserInfo"
+                >保存设置</el-button
+              >
             </el-form-item>
           </el-form>
+
         </el-col>
         <el-col :span="12">
           <el-upload
@@ -70,7 +77,9 @@ export default {
         // 追加文件对象  对象的key必须和接口需求一样
         formdata.append('photo', file)
         // 通过axios提交数据
-        const { data: { data } } = await this.$http.patch('user/photo', formdata)
+        const {
+          data: { data }
+        } = await this.$http.patch('user/photo', formdata)
         this.$message.success('修改头像成功')
         // 预览
         this.user.photo = data.photo
@@ -80,12 +89,15 @@ export default {
         this.$message.error('修改头像失败')
       }
     },
+
     // 获取个人资料
     async getUserInfo () {
-      const { data: { data } } = await this.$http.get('user/profile')
+      const {
+        data: { data }
+      } = await this.$http.get('user/profile')
       this.user = data
     },
-    // 修改个人资料
+    // 修改个人资料  async和await
     async updateUserInfo () {
       try {
         // 后台接口接收 三个数据 不能是 user 包含更多数据
@@ -102,4 +114,4 @@ export default {
 }
 </script>
 
-<style scoped lang='less'></style>
+<style scoped lang="less"></style>
